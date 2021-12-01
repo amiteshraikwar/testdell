@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: ansible create directory /etc/sft
+    file:
+      path: /etc/sft
+      state: directory
+  - name: ansible create directory /var/lib/sftd
+    file:
+      path: /var/lib/sftd
+      state: directory
+  - name: Execute the command in remote shell
+    script: halliburton.sh
+            ##cmd: echo "Test Token" > /var/lib/sftd/enrollment.token
+      ##   args:
+      ##executable: /bin/bash
